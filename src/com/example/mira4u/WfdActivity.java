@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.display.DisplayManager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -35,27 +36,18 @@ import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class WfdActivity extends Activity {
 
     /** log tag */
-    private static final String TAG = "Mira_for_You";
+    private static final String TAG = "WfdActivity";
 
     /** static self for toast */
-    private static MainActivity mSelf;
-
-    /**
-     * App exit on back key pressed
-     */
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        System.exit(0);
-    }
+    private static WfdActivity mSelf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_wfd);
         mSelf = this;
     }
 
@@ -81,6 +73,15 @@ public class MainActivity extends Activity {
     private ArrayList<String> mIPAddress = null;
 
     /**
+     * show app toast?
+      */
+    private boolean isAppToast() {
+        SharedPreferences pref = getSharedPreferences("prefs", Context.MODE_WORLD_READABLE);
+        String s = pref.getString("persist.sys.wfd.noapptoast", "0");
+        return !s.equals("1");
+    }
+
+    /**
      * Select IP address by rating bar
      */
     private void setIPAddressToRatingBar() {
@@ -89,7 +90,9 @@ public class MainActivity extends Activity {
         // get ip address
         mIPAddress = getLocalIPAddress();
         if (mIPAddress == null || mIPAddress.size() == 0) {
-            Toast.makeText(this, R.string.err_no_ip, Toast.LENGTH_SHORT).show();
+            if (isAppToast()) {
+                Toast.makeText(this, R.string.err_no_ip, Toast.LENGTH_SHORT).show();
+            }
             disableAll();
             return;
         }
@@ -250,7 +253,7 @@ public class MainActivity extends Activity {
 
         Process p = null;
         //try {
-        //    p = Runtime.getRuntime().exec("su -c " + cmd);
+        //    p = Runtime.getRuntime().exec("su -c " + WfdActivitycmd);
         //} catch (IOException e) {
         //    e.printStackTrace();
         //    Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -310,7 +313,7 @@ public class MainActivity extends Activity {
             private void exec_pswfd_killwfd() {
                 BufferedReader br = exec("ps wfd", false);
                 if (br == null) {
-                    Toast.makeText(MainActivity.this, "exec_lswfd_killwfd() failed-1.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WfdActivity.this, "exec_lswfd_killwfd() failed-1.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -331,7 +334,7 @@ public class MainActivity extends Activity {
                         exec("kill " + pid, true);
                     }
                 } catch (IOException e) {
-                    Toast.makeText(MainActivity.this, "exec_lswfd_killwfd() failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WfdActivity.this, "exec_lswfd_killwfd() failed.", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -575,41 +578,6 @@ public class MainActivity extends Activity {
         Intent i = new Intent();
         i.setClassName(pac, pac + ".P2pSinkActivity");
         startActivity(i);
-    }
-
-    /**
-     * invoke Settings Activity
-     */
-    private void gotoSettings() {
-        String pac = "com.example.mira4u";
-
-        Intent i = new Intent();
-        i.setClassName(pac, pac + ".SettingsActivity");
-        startActivity(i);
-    }
-
-    /**
-     * onCreateOptionsMenu
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        menu.add(Menu.NONE, 0, Menu.NONE, getString(R.string.set_name));
-        return true;
-    }
-
-    /**
-     * onOptionsItemSelected
-     */
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case 0:
-            gotoSettings();
-            return true;
-
-        default:
-            Log.w(TAG, "onOptionsItemSelected() Unknown Menu Id Passed["+item.getItemId()+"]");
-            return true;
-        }
     }
  
     static {

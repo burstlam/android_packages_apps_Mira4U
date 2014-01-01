@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Miracast</string>
+    <string name="p2p_name">P2p Sink 守護進程</string>
+    <string name="wfd_name">Wfd 活動</string>
+
+<!-- Settings -->
+    <string name="cat_source">來源設定</string>
+    <string name="cat_sink">Sink 設定</string>
+    <string name="cat_dev">開發者設定</string> 
+
+<!-- Source -->
+    <string name="checkbox_log">啟用發送logcat的輸出</string>
+    <string name="checkbox_log_summary">開發者用來確認 RTSP 記錄.</string>
+
+    <string name="checkbox_hdcp">跳過 HDCP 認證</string>
+    <string name="checkbox_hdcp_summary">若無法通過 HDCP 認證可嘗認使用這個功能</string>
+
+    <string name="checkbox_fullhd">使用全高清影像</string>
+    <string name="checkbox_fullhd_summary">1280 x 720  -> 1920 x 1080</string>
+
+    <string name="checkbox_brchange">強行改變比特率</string>
+    <string name="checkbox_brchange_summary">選擇比特率</string>
+
+    <string name="bitrate">改變比特率</string>
+    <string name="bitrate_summary">%1$s</string>
+    <string name="bitrate_summary_1st">可用範圍 1000000-20000000</string>
+
+    <string name="checkbox_fpschange">強行強變 FPS</string>
+    <string name="checkbox_fpschange_summary">選擇 FPS</string>
+
+    <string name="framerate">改變顯示幀數</string>
+    <string name="framerate_summary">%1$s Hz</string>
+    <string name="framerate_summary_1st">選項 10, 20, 30, 40, 50, 60 Hz</string>
+
+    <string name="checkbox_timeout">延長連接逾時值</string>
+    <string name="checkbox_timeout_summary">RTSP 連接逾時值由15秒增至30秒. 此方案所需的OTA封裝權限（需要framework.jar）.</string>
+
+    <string name="checkbox_timesyncer">啟用聲畫同步</string>
+    <string name="checkbox_timesyncer_summary">Robust(魯棒)連接到AOSP4.4用</string>
+
+    <string name="button_wfd_exec">! 開啟無線顯示設定</string>
+    <string name="button_wfd_exec_summary">執行設定工具</string>
+
+<!-- Sink -->
+    <string name="checkbox_sinkrotate">禁用畫面旋轉</string>
+    <string name="checkbox_sinkrotate_summary">MHL 手指專用</string>
+
+    <string name="checkbox_specialmode">特別模式(?)</string>
+    <string name="checkbox_specialmode_summary">特別模式使用 UDP RTCP 後備通道連接.</string>
+
+    <string name="button_sink_exec">! 開啟 P2p Sink 守設進程序</string>
+    <string name="button_sink_exec_summary">開啟接收進程</string>
+
+<!-- Dev -->
+    <string name="checkbox_apptoast">禁用提示</string>
+    <string name="checkbox_apptoast_summary"></string>
+
+    <string name="button_wfddev_exec">! 啟用Wfd 守設進程序</string>
+    <string name="button_wfddev_exec_summary">加強往後兼容</string>
+
+<!-- wfd dev -->
+    <string name="lbl_Source">來源</string>
+    <string name="lbl_Sink">Sink</string>
+    <string name="lbl_IP">(IP 位址)</string>
+    <!-- 7236 = default port -->
+    <string name="lbl_Port">7236</string>
+    <string name="lbl_fwwifisource">F/W 監測 Wi-Fi 信號來源 _ </string>
+    <string name="lbl_fwwfdsource">F/W 監測 Wi-Fi wfd 信號來源 _ </string>
+    <string name="lbl_fwwifisink">F/W 監測 Wi-Fi Sink 信號來源_ </string>
+    <string name="lbl_fwp2psink">P2p Sink</string>
+
+    <string name="lbl_killwfd">清除 wfd進程</string>
+
+    <string name="err_no_ip">沒有找到任何網絡. 請先連接.</string>
+
+</resources>

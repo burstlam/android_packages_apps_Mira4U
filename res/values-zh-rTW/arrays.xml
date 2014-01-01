@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries_framerate">
+        <item>10 Hz - TEST!</item>
+        <item>20 Hz - TEST!!</item>
+        <item>30 Hz - AOSP 標準 </item>
+        <item>40 Hz - TEST!!!!</item>
+        <item>50 Hz - TEST!!!!!</item>
+        <item>60 Hz - TEST!!!!!!</item>
+    </string-array>
+    <string-array name="entryvalues_framerate">
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+    </string-array>
+
+    <string-array name="entries_bitrate">
+        <item>1000000</item>
+        <item>2000000</item>
+        <item>3000000</item>
+        <item>4000000</item>
+        <item>5000000 - AOSP 標準</item>
+        <item>8000000</item>
+        <item>10000000</item>
+        <item>12000000 - Galaxy Nexus 上限</item>
+        <item>16000000</item>
+        <item>20000000 - Nexus 7 上限</item>
+    </string-array>
+    <string-array name="entryvalues_bitrate">
+        <item>1000000</item>
+        <item>2000000</item>
+        <item>3000000</item>
+        <item>4000000</item>
+        <item>5000000</item>
+        <item>8000000</item>
+        <item>10000000</item>
+        <item>12000000</item>
+        <item>16000000</item>
+        <item>20000000</item>
+    </string-array>
+</resources>
